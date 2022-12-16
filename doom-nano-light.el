@@ -51,7 +51,7 @@
    (orange     '("#FFA726"))
    (green      '("#9CCC65"))
    (teal       '("#0097A7"))
-   (yellow     '("#FFEE58"))
+   (yellow     '("#FBC02D"))
    (magenta    '("#EC407A"))
    (violet     '("#AB47BC"))
    (cyan       '("#26C6DA"))
@@ -85,9 +85,9 @@
    (link           blue)
 
    ;; custom categories
-   (-modeline-pad
-    (when doom-plain-padded-modeline
-      (if (integerp doom-plain-padded-modeline) doom-plain-padded-modeline 4)))
+   (-modeline-pad 1)
+   ;;  (when doom-plain-padded-modeline
+   ;;    (if (integerp doom-plain-padded-modeline) doom-plain-padded-modeline 4)))
 
    (modeline-bg              (doom-darken bg-alt 0.15))
    (modeline-bg-alt          (doom-darken bg-alt 0.1))
