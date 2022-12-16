@@ -3,3 +3,19 @@
 *WORK IN PROGRESS*
 
 This repo is for porting the excelent work of Nicolas Rougier to doom emacs.
+
+Current state:
+[[./screenshot.png]]
+
+*Disclaimer:* this is /literally/ my first elisp project. Althought most of the lines are the combination of Nicolas Rougier work and doom-plain, I advise some caution while navegating through my parentheses.
+
+* Install
+There are some bug I cannot track it down (I think it's related to load order of doom-theme).
+For now, adding ~doom-nano-ui.el~ in your config and copy ~doom-nano-light.el~ to ~.doom.d/theme/~ is your best shot.
+
+* TO-DO's
+- [ ] some faces are using ~nano-subtle~ as foreground and making invisible.
+- [ ] all modeline is weird
+- [ ] links are using ~nano-subtle~
+- [ ] ~font-lock-constant~ is italic
+- [ ] ~doom-nano-dark~
