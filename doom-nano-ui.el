@@ -38,3 +38,5 @@
 (setq window-divider-default-right-width 24
       window-divider-default-places 'right-only)
 (window-divider-mode 1)
+
+(provide 'doom-nano-ui)
