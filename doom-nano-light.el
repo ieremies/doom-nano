@@ -58,7 +58,7 @@
    (dark-cyan  '("#00838F"))
 
    ;; face categories -- required for all themes
-   (highlight      nano-subtle)
+   (highlight      nano-faded)
    (vertical-bar   base5)
    (selection      base1)
    (builtin        nano-salient)
@@ -99,11 +99,30 @@
   ;;;; Base theme face overrides
   ((error   :underline `(:style wave :color ,error))
    (warning :underline `(:style wave :color ,warning))
-   ((font-lock-constant-face &override)      :slant 'italic)
+   ;; Font-lock
+   ((font-lock-constant-face &override)      :weight 'normal)
    ((font-lock-comment-face &override)       :slant 'italic)
-   ((font-lock-function-name-face &override) :slant 'italic)
+   ((font-lock-function-name-face &override) :foreground fg :weight 'bold)
    ((font-lock-type-face &override)          :slant 'italic)
-   (hl-line :background base8)
+
+   ;; Tree-sitter
+   (tree-sitter-hl-face:number          :slant 'normal)
+   (tree-sitter-hl-face:function.call   :foreground fg :weight 'bold)
+   (tree-sitter-hl-face:method.call     :foreground fg :weight 'bold)
+   (tree-sitter-hl-face:property        :slant 'italic)
+   (tree-sitter-hl-face:number          :foreground nano-popout)
+   ;; TODO its inherinting default causing weird behavior in org-block
+   (tree-sitter-hl-face:puntuation      :background 'unspecified)
+
+   ;; Window divider
+   (window-divider :foreground bg :background bg)
+
+   ;; Parens
+   ((show-paren-match &override) :foreground nano-critical)
+   ((show-paren-missmatch &override) :background nano-critical)
+
+   ;; Others
+   (hl-line :background nano-subtle)
    ((line-number &override) :foreground base3)
    ((line-number-current-line &override) :foreground base2)
    (mode-line
@@ -112,43 +131,42 @@
    (mode-line-inactive
     :background modeline-bg-inactive :foreground modeline-fg-alt
     :box (if -modeline-pad `(:line-width ,-modeline-pad :color ,modeline-bg-inactive)))
-   (mode-line-emphasis :foreground highlight)
+   (mode-line-emphasis :foreground fg)
 
    ;;;; doom-modeline
    (doom-modeline-bar :background modeline-bg)
    (doom-modeline-bar-inactive :inherit 'doom-modeline-bar)
    (doom-modeline-project-dir :foreground fg)
    (doom-modeline-buffer-file :foreground fg)
-   (doom-modeline-buffer-modified :weight 'bold :foreground "#000000")
+   (doom-modeline-buffer-modified :weight 'bold :foreground fg)
    (doom-modeline-panel :inherit 'mode-line-highlight :background base3 :foreground fg)
+
    ;;;; ivy
    (ivy-posframe :background bg-alt)
+
    ;;;; magit
    ((magit-diff-added-highlight &override)   :foreground fg :background (doom-blend vc-added bg 0.3))
    ((magit-diff-removed &override)           :foreground (doom-lighten fg 0.4) :background (doom-blend vc-deleted bg 0.1))
    ((magit-diff-removed-highlight &override) :foreground fg :background (doom-blend vc-deleted bg 0.22))
+
    ;;;; lsp-mode
    (lsp-headerline-breadcrumb-symbols-face :foreground keywords :weight 'bold)
+
    ;;;; outline <built-in>
-   (outline-1 :slant 'italic :foreground fg-alt)
-   (outline-2 :inherit 'outline-1 :foreground base2)
+   (outline-1 :weight 'bold :foreground fg)
+   (outline-2 :inherit 'outline-1)
    (outline-3 :inherit 'outline-2)
    (outline-4 :inherit 'outline-3)
    (outline-5 :inherit 'outline-4)
    (outline-6 :inherit 'outline-5)
    (outline-7 :inherit 'outline-6)
    (outline-8 :inherit 'outline-7)
+
    ;;;; org <built-in>
    ((org-block &override) :background bg-alt)
    ((org-block-begin-line &override) :foreground base5)
-   ;;;; solaire-mode
-   (solaire-mode-line-face
-    :inherit 'mode-line
-    :background modeline-bg-alt
-    :box (if -modeline-pad `(:line-width ,-modeline-pad :color ,modeline-bg-alt)))
-   (solaire-mode-line-inactive-face
-    :inherit 'mode-line-inactive
-    :background modeline-bg-inactive-alt
-    :box (if -modeline-pad `(:line-width ,-modeline-pad :color ,modeline-bg-inactive-alt)))))
+   ((org-link &override) :foreground blue)
+   ((org-verbatin &override) :foreground nano-popout)
+   ))
 
 ;;; doom-nano-light.el ends here
