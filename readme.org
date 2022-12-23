@@ -7,15 +7,22 @@ This repo is for porting the excelent work of Nicolas Rougier to doom emacs.
 Current state:
 [[./screenshot.png]]
 
-*Disclaimer:* this is /literally/ my first elisp project. Althought most of the lines are the combination of Nicolas Rougier work and doom-plain, I advise some caution while navegating through my parentheses.
+*Disclaimer:* this is /literally/ my first elisp project. I advise some caution while navegating through my parentheses.
 
 * Install
-There are some bug I cannot track it down (I think it's related to load order of doom-theme).
-For now, adding ~doom-nano-ui.el~ in your config and copy ~doom-nano-light.el~ to ~.doom.d/theme/~ is your best shot.
+Clone this repo, copy =doom-nano-light-theme.el= and/or =doom-nano-dark-theme.el= and add the following to your config:
+#+begin_src elisp
+(add-to-list 'load-path "~/proj/doom-nano/")    ;; path to where you cloned this repo
+(add-to-list 'load-path "~/bin/nano-emacs/")    ;; path to where you cloned nano-emacs
+(require 'doom-nano-ui)                         ;; apply ui changes
+(setq doom-theme 'doom-nano-light)              ;; set theme
+(require 'doom-nano-faces)                      ;; apply some more faces (to be removed in the future)
+#+end_src
 
 * TO-DO's
-- [ ] some faces are using ~nano-subtle~ as foreground and making invisible.
-- [ ] all modeline is weird
-- [ ] links are using ~nano-subtle~
-- [ ] ~font-lock-constant~ is italic
-- [ ] ~doom-nano-dark~
+A lot, most of it is marked on the code.
+
+* Future plans
+The end goal of this project is to be the promissed ~doom :ui nano~ package.
+To do so, it has to define a "nano-like" theme for all ~doom-themes~.
+The best way that I see this happening is deducing the ~nano-colors~ from the default faces defined in every ~doom-theme~ and redefining all faces based on that.
