@@ -263,12 +263,9 @@
 
    ;; Org
    (org-archived                                :foreground nano-faded :weight 'light)
-   (org-block                                   :inherit hl-line)
-   (org-block-begin-line                        :foreground nano-faded :weight 'light)
-   (org-block-end-line                          :foreground nano-faded :weight 'light)
-   (org-block                                   :extend t)
-   (org-block-begin-line                        :extend t)
-   (org-block-end-line                          :extend t)
+   (org-block                                   :background nano-highlight :extend t)
+   (org-block-begin-line                        :foreground nano-faded :weight 'light :extend t)
+   (org-block-end-line                          :foreground nano-faded :weight 'light :extend t)
    (org-checkbox                                :foreground nano-faded :weight 'light)
    (org-checkbox-statistics-done                :foreground nano-faded :weight 'light)
    (org-checkbox-statistics-todo                :foreground nano-faded :weight 'light)
