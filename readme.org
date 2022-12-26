@@ -10,17 +10,48 @@ Current state:
 *Disclaimer:* this is /literally/ my first elisp project. I advise some caution while navegating through my parentheses.
 
 * Install
-Clone this repo, copy =doom-nano-light-theme.el= and/or =doom-nano-dark-theme.el= and add the following to your config:
+Add the following to =packages.el.=
 #+begin_src elisp
-(add-to-list 'load-path "~/proj/doom-nano/")    ;; path to where you cloned this repo
-(add-to-list 'load-path "~/bin/nano-emacs/")    ;; path to where you cloned nano-emacs
-(require 'doom-nano-ui)                         ;; apply ui changes
-(setq doom-theme 'doom-nano-light)              ;; set theme
-(require 'doom-nano-faces)                      ;; apply some more faces (to be removed in the future)
+(package! doom-nano
+  :recipe (:host github :repo "ieremies/doom-nano"))
 #+end_src
 
+Copy =doom-nano-light-theme.el= and/or =doom-nano-dark-theme.el= to your ~.doom.d/themes/~ and add the following to your =config.el=.
+#+begin_src elisp
+(require 'doom-nano-ui)
+(setq doom-theme 'doom-nano-light) ;; or dark
+#+end_src
+
+** The other way
+One other option is to (some what) directly use Rougier's work:
+#+begin_src elisp
+;; This goes in packages.el
+(package! nano
+  :recipe (:host github :repo "rougier/nano-emacs"))
+(package! doom-nano
+  :recipe (:host github :repo "ieremies/doom-nano"))
+#+end_src
+and
+#+begin_src elisp
+;; This goes in config.el
+(require 'doom-nano-ui)         ;; only ui changes
+
+(setq doom-theme 'doom-plain)   ;; see above
+(require 'nano-theme-light)     ;; set color scheme
+
+;; (setq doom-theme 'doom-nord)
+;; (require 'nano-theme-dark)
+
+(require 'doom-nano-faces)      ;; apply faces
+#+end_src
+
+The problem with the latter form is some faces may not behave well (like the modeline). To prevent that, you can set a doom-theme that matches. I got the best results using =doom-plain= for the light theme and =doom-nord= for the dark one.
+
 * TO-DO's
-A lot, most of it is marked on the code.
+- The modeline
+- Ideally I want to change the themes to use inheritance, but I could not manage to get the faces defined...
+- Some categories of faces defined in [[https://github.com/rougier/nano-emacs/blob/master/nano-theme.el][nano-emacs/nano-theme.el]] are not yet ported
+- nano-theme-dark
 
 * Future plans
 The end goal of this project is to be the promissed ~doom :ui nano~ package.
