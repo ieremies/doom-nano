@@ -19,7 +19,6 @@
 (def-doom-theme doom-nano-light
   "Theme based on Nicolas Rougier's NANO."
 
-  ;; name      default/256/16
   ((bg         '("#ffffff"))
    (bg-alt     '("#f3f3f3"))
    (base0      '("#969896"))
@@ -34,8 +33,6 @@
    (fg         '("#37474F"))
    (fg-alt     (doom-lighten fg 0.15))
 
-   (nano-foreground '("#37474F")) ;; Blue Grey / L800
-   (nano-background '("#FFFFFF")) ;; White
    (nano-highlight  '("#FAFAFA")) ;; Very Light Grey
    (nano-critical   '("#FF6F00")) ;; Amber / L900
    (nano-salient    '("#673AB7")) ;; Deep Purple / L500
@@ -107,8 +104,8 @@
 
    (cursor                                       :background fg)
    (window-divider                               :foreground bg)
-   (window-divider-first-pixel                   :foreground nano-background)
-   (window-divider-last-pixel                    :foreground nano-background)
+   (window-divider-first-pixel                   :foreground bg)
+   (window-divider-last-pixel                    :foreground bg)
    (vertical-border                              :foreground nano-subtle)
 
    ;; Semantic
@@ -289,13 +286,13 @@
    ;; (org-indent                               :foreground nano-faded :weight 'light)
    (org-latex-and-related                       :foreground nano-faded :weight 'light)
    (org-level-1                                 :weight 'medium)
-   (org-level-2                                 :weight 'medium)
-   (org-level-3                                 :weight 'medium)
-   (org-level-4                                 :weight 'medium)
-   (org-level-5                                 :weight 'medium)
-   (org-level-6                                 :weight 'medium)
-   (org-level-7                                 :weight 'medium)
-   (org-level-8                                 :weight 'medium)
+   (org-level-2                                 :inherit 'org-level-1)
+   (org-level-3                                 :inherit 'org-level-2)
+   (org-level-4                                 :inherit 'org-level-3)
+   (org-level-5                                 :inherit 'org-level-4)
+   (org-level-6                                 :inherit 'org-level-5)
+   (org-level-7                                 :inherit 'org-level-6)
+   (org-level-8                                 :inherit 'org-level-7)
    (org-link                                    :foreground nano-salient :weight 'light)
    (org-list-dt                                 :foreground nano-faded :weight 'light)
    (org-macro                                   :foreground nano-faded :weight 'light)
@@ -324,7 +321,7 @@
    ;; Company
    (company-tooltip-selection                   :weight 'medium :background nano-popout)
    (company-tooltip                             :background nano-subtle)
-   (company-scrollbar-fg                        :foreground nano-faded :weight 'light :background nano-foreground)
+   (company-scrollbar-fg                        :foreground nano-faded :weight 'light :background fg)
    (company-scrollbar-bg                        :background nano-faded)
    (company-tooltip-common                      :foreground nano-faded :weight 'light)
    (company-tooltip-common-selection            :weight 'medium :background nano-popout)
