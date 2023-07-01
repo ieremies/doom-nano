@@ -11,20 +11,13 @@
                '(tool-bar-lines . 0)
                '(menu-bar-lines . 0))))
 
-(setq inhibit-startup-screen 't
-      inhibit-startup-message 't
-      inhibit-startup-echo-area-message 't
-      initial-scratch-message 'nil
-
-      x-underline-at-descent-line 't
+(setq x-underline-at-descent-line 't
 
       ;; No ugly button for checkboxes
       widget-image-enable 'nil
 
       ;; Hide org markup
       org-hide-emphasis-markers 't
-
-      scroll-bar-mode -1
 
       ;; Moderate font lock
       font-lock-maximum-decoration 'nil)
